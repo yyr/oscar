@@ -4,6 +4,8 @@ can mode logo
 
 SET WINDOW/SIZE=.45/ASPECT=0.7
 ! set window/size=1.5
+
+set view full
 go fland 40 white basemap solid x=40:80 y=4:24 5
 go land_detail black overlay 8 9 blue lightblue
 ! GO basemap x=232:241 y=44:50
@@ -17,9 +19,13 @@ show data/all
 ! SET REGION/X=55:80/Y=5:30
 
 let wind = (U^2 + V^2)^.5
-fill/overlay wind[L=1:31@ave]
+fill/overlay/lev=(0,2,.2)/title="Current velocity (m/s)" wind[L=1:31@ave]
 
 vector/overlay/length=1./title="Ref." U[L=1:31@ave], V[L=1:31@ave]
+
+show view full
+GO ccbar  0.93,0.96,  0.2,0.8,  0,2,0.2, v
+
 frame/file="oscar_2010_jul.gif"
 
 
