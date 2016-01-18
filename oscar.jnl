@@ -1,0 +1,24 @@
+cancel data/all
+can mode logo
+
+
+SET WINDOW/SIZE=.45/ASPECT=0.7
+! set window/size=1.5
+go fland 40 white basemap solid x=40:80 y=4:24 5
+go land_detail black overlay 8 9 blue lightblue
+! GO basemap x=232:241 y=44:50
+
+label/nouser `($ppl$xlen)/2`, `($ppl$yorigin)-1`, 0, 0, 0.16, \
+             "OSCAR Currents, JUL 2010"
+use "ISRO_CURRENT_TOT_2010_JUL_AUG_AS.nc"
+
+show data/all
+
+! SET REGION/X=55:80/Y=5:30
+
+vector/overlay/length=1./title="Ref." U[L=1:31@ave], V[L=1:31@ave]
+frame/file="oscar_2010_jul.gif"
+
+
+can region
+can data/all
