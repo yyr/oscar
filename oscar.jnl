@@ -1,33 +1,26 @@
 cancel data/all
 can mode logo
 
-
 SET WINDOW/SIZE=.45/ASPECT=0.7
-! set window/size=1.5
 
 set view full
-go fland 40 white basemap solid x=40:80 y=4:24 5
+set mode meta Jan-15-mean.ps
+go fland 40 white basemap solid x=65:75 y=13:20 5
 go land_detail black overlay 8 9 blue lightblue
-! GO basemap x=232:241 y=44:50
 
 label/nouser `($ppl$xlen)/2`, `($ppl$yorigin)-1`, 0, 0, 0.16, \
-             "OSCAR Currents, JUL 2010"
-use "ISRO_CURRENT_TOT_2010_JUL_AUG_AS.nc"
-
-show data/all
-
-! SET REGION/X=55:80/Y=5:30
+             "OSCAR Currents(m/s), Jan-2015"
+use "ISRO_CURRENT_TOT_2015_JAN_JUN_AS.nc"
 
 let wind = (U^2 + V^2)^.5
-fill/overlay/lev=(0,2,.2)/title="Current velocity (m/s)" wind[L=1:31@ave]
-
-vector/overlay/length=1./title="Ref." U[L=1:31@ave], V[L=1:31@ave]
+fill/overlay/lev=(0,.4,.05)/nolabel wind[L=1:31@ave]
+vector/overlay/length=0.2/xskip=1/yskip=1/title="Ref." U[L=1:31@ave], V[L=1:31@ave]
 
 show view full
-GO ccbar  0.93,0.96,  0.2,0.8,  0,2,0.2, v
+GO ccbar  0.12,0.9  0.9,0.92  0,.4,.05  h
 
-frame/file="oscar_2010_jul.gif"
-
+! GO ccbar  0.93,0.96,  0.2,0.8,  0,2,0.2, v
+can mode meta
 
 can region
 can data/all
