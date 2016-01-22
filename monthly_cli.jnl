@@ -1,0 +1,24 @@
+cancel data/all
+can mode logo
+
+set window/size=.45/aspect=1
+
+set view full
+set mode meta jan_cli.ps
+go fland 5 grey basemap solid x=65:75 y=13:22 5
+! go land_detail black overlay 8 9 blue lightblue
+
+use "JAN_2010_2015.nc"
+
+show data/all
+
+let current = (U^2 + V^2)^.5
+fill/overlay/lev=(0,.8,.05)/nolabel current[L=@ave]
+vector/overlay/length=.5/xskip=3/yskip=3/title="Ref." U[L=@ave], V[L=@ave]
+
+show view full
+go ccbar  0.12,0.9  0.9,0.92  0,.8,.05  h
+
+can mode meta
+can region
+can data/all

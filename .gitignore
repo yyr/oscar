@@ -1,1 +1,6 @@
 *.nc
+*.cdf
+*.ps
+*.gif
+/ferret.jnl
+*.pdf
