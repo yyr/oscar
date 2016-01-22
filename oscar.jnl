@@ -1,7 +1,7 @@
 cancel data/all
 can mode logo
 
-SET WINDOW/SIZE=.45/ASPECT=0.7
+set window/size=.45/aspect=0.9
 
 set view full
 set mode meta Jan-15-mean.ps
@@ -10,16 +10,17 @@ go land_detail black overlay 8 9 blue lightblue
 
 label/nouser `($ppl$xlen)/2`, `($ppl$yorigin)-1`, 0, 0, 0.16, \
              "OSCAR Currents(m/s), Jan-2015"
+
 use "ISRO_CURRENT_TOT_2015_JAN_JUN_AS.nc"
 
-let wind = (U^2 + V^2)^.5
-fill/overlay/lev=(0,.4,.05)/nolabel wind[L=1:31@ave]
+let current = (U^2 + V^2)^.5
+fill/overlay/lev=(0,.4,.05)/nolabel current[L=1:31@ave]
 vector/overlay/length=0.2/xskip=1/yskip=1/title="Ref." U[L=1:31@ave], V[L=1:31@ave]
 
 show view full
-GO ccbar  0.12,0.9  0.9,0.92  0,.4,.05  h
+go ccbar  0.12,0.9  0.9,0.92  0,.4,.05  h
 
-! GO ccbar  0.93,0.96,  0.2,0.8,  0,2,0.2, v
+! go ccbar  0.93,0.96,  0.2,0.8,  0,2,0.2, v
 can mode meta
 
 can region
